@@ -13,3 +13,5 @@ Dale Strain
 Emmanuel Silva
 
 Kendall Helms
+
+Umar Faruqi
