@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+    fetch('datahubio_oscar_data_json.json')
+        .then(response => response.json())
+        .then(data =>{
+            //loops through json
+            for(let i = 0; i < data.length; i++){
+                if(data[i].category === "WRITING (Story and Screenplay)"){
+                console.log(data[i].category + ' ' + data[i].entity);
+               
+                }
+                
+            }
+        })
+        </script>
+   
+</body>
+</html>
