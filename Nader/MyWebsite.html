@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+
+body {background-color: powderblue;}
+h1   {color: blue;}
+p     {color: blue;}
+</style>
+
+</head>
+
+<body>
+
+<center>
+<h1>Malia's Plant Wagon.</h1>
+<h2 >Our Vision</h2>
+
+<button id = "foo" onclick="myFunc()">Menu</button>
+
+<p id="json"></p>
+
+
+<script>
+function myFunc() { //This dosent do much else except make a button
+  document.getElementById("Menu") ;
+  
+}
+
+var x =document.getElementById("foo");//find id foo
+x.onclick = showMenu;
+
+function showMenu(event){
+alert("Menu in here by malia!");
+
+var food = { //json testing
+  "burrito"  :  "vegan burrito",
+
+};
+var obj = JSON.parse(food);
+
+document.getElementById("json").innerHTML =
+"Food" + obj.burrito;
+
+};
+
+</script>
+</center>
+
+</body>
+
+
+</html>
