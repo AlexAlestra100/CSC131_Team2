@@ -22,13 +22,12 @@ async function searchData(){
     {
        numOfMovies++;       // increments each time search for year is found
          
-        console.log('/n');
         console.log(data[i].year);
         
     }
     
 }
-console.log("/n");
+
 document.write(" Number of Movies nominated in " + inYear + " is " + numOfMovies);
 
 }
