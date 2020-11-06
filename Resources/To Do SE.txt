@@ -1,3 +1,0 @@
-Input js file into html
-Combining all files
-How to pull JSON object in js
