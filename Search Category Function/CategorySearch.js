@@ -1,12 +1,13 @@
-const database = 'https://github.com/AlexAlestra100/CSC131_Team2/blob/main/refrence.json';
+const database = 'testDataJson.json';
 
-async function categorySearch(){
+async function categorySearch(searchKey){
     const response = await fetch(database);
     const data = await response.json();
 
     for(let i = 0; i < data.length; i++){
-        console.log(data[i].category);
+        if(data[i].category === searchKey)
+            console.log(data[i].category + ' ' + data[i].entity + ' ' + data[i].winner + ' ' + data[i].year);
     }
 }
 
-categorySearch();
+categorySearch("ENGINEERING EFFECTS");
