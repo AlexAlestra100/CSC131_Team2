@@ -5,7 +5,7 @@ async function categorySearch(){
     const data = await response.json();
 
     for(let i = 0; i < data.length; i++){
-        console.log(data.category);
+        console.log(data[i].category);
     }
 }
 
