@@ -10,13 +10,10 @@ async function categorySearch(searchKey){
         if(data[i].category === searchKey){
 
             //set current point in array as an object
-            searchResult[resultCounter] = {};
+            //searchResult[resultCounter] = {};
 
             //adds in the results from the database to object in the array
-            searchResult[resultCounter].category = data[i].category;
-            searchResult[resultCounter].entity = data[i].entity;
-            searchResult[resultCounter].winner = data[i].winner;
-            searchResult[resultCounter].year = data[i].year;
+            searchResult.push(data[i]);
             
             //loging search results to check
             //console.log(searchResult[resultCounter].category + ' ' + searchResult[resultCounter].entity + ' ' + searchResult[resultCounter].winner + ' ' + searchResult[resultCounter].year);
