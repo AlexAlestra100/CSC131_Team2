@@ -29,5 +29,3 @@ async function categorySearch(searchKey){
     }
     return searchResult;
 }
-
-categorySearch("ACTOR");
