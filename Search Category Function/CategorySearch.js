@@ -11,8 +11,6 @@ async function categorySearch(searchKey){
     for(let i = 0; i < data.length; i++){
         if(data[i].category === searchKey){
 
-            //set current point in array as an object
-            //searchResult[resultCounter] = {};
 
             //adds in the results from the database to object in the array
             searchResult.push(data[i]);
