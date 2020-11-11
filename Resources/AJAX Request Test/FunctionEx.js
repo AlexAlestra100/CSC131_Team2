@@ -18,4 +18,5 @@ function Search (Arr, year) {
     return ret;
 }
 
+//Waits for the async getOscarsData() to complete before searching and then logging to the console.
 getOscarsData().then(data => console.log(Search(data, 1999)));
