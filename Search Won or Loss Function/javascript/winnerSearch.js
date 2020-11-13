@@ -11,7 +11,7 @@ async function winnerSearch(searchKey){
         if(data[i].winner == searchKey){
 
             //test if it works
-            console.log(console.log(data[i].category + ' ' + data[i].entity + ' ' + data[i].winner + ' ' + data[i].year));
+            console.log(data[i].category + ' ' + data[i].entity + ' ' + data[i].winner + ' ' + data[i].year);
             //adds in the results from the database to object in the array
             searchResult.push(data[i]);
             
