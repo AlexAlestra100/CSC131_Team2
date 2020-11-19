@@ -1,4 +1,4 @@
-async function importingJson(){
+async function fetchOscarsData() {
     const database = './data.json';
     const response = await fetch(database);
     const data = await response.json();
@@ -6,7 +6,7 @@ async function importingJson(){
 } 
  
  async function combinedSearch(inputJSON) {
-    let result = await importingJson();
+    let result = await fetchOscarsData();
 
     if(parseWinnerKeyData(inputJSON))                           result = search(result, "winner", inputJSON.winner);
     if(inputJSON.year > 1927 && inputJSON.year < 2017)          result = search(result, "year", inputJSON.year);
@@ -39,7 +39,8 @@ function parseWinnerKeyData(inputJSON) {
 
         case 1: return inputJSON.winner = true;
 
-        case 2: {
+        case 2: 
+        {
             inputJSON.winner = false;
 
             return true;
