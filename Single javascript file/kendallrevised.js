@@ -8,10 +8,10 @@ async function fetchOscarsData() {
  async function combinedSearch(inputJSON) {
     let result = await fetchOscarsData();
 
-    if(parseWinnerKeyData(inputJSON))                           result = search(result, "winner", inputJSON.winner);
-    if(inputJSON.year > 1927 && inputJSON.year < 2017)          result = search(result, "year", inputJSON.year);
-    if(inputJSON.category)                                      result = search(result, "category", inputJSON.category);
-    if(inputJSON.entity)                                        result = search(result, "entity", inputJSON.entity);
+    if( parseWinnerKeyData(inputJSON))                          result = search(result, "winner", inputJSON.winner);
+    if( inputJSON.category)                                     result = rangeSearch(result, "category", inputJSON.category);
+    if( inputJSON.entity)                                       result = rangeSearch(result, "entity", inputJSON.entity);
+    if( inputJSON.year)                                         result = rangeSearch(result, "year", inputJSON.year);
 
     return result;
 }
@@ -28,13 +28,23 @@ function search(oscarsData, searchKey, query) {
     return searchResult;
 }
 
+function rangeSearch(oscarsData, searchKey, query){
+    let result = [];
+
+    for (let i = 0; i <= query.length; i++)
+        result = result.concat(search(oscarsData, searchKey, query[i]));
+    
+    return result;
+}
+
 //Winner key in input JSON is base 3 value
 //case 0 - Don't do a search
 //case 1 - Do a search for true
 //case 2 - Do a search for false
 //return false otherwise
 function parseWinnerKeyData(inputJSON) {    
-    switch (inputJSON.winner){
+    switch (inputJSON.winner)
+    {
         case 0: return false;
 
         case 1: return inputJSON.winner = true;
@@ -51,6 +61,6 @@ function parseWinnerKeyData(inputJSON) {
 }
 
 //test lines
-let testInputJSON = {"winner" : 1};
+let testInputJSON = {"winner" : 2, "year" : [1999, 2000, 2001, 2002], "category" : ["ACTOR IN A LEADING ROLE", "BEST PICTURE"]};
 
 combinedSearch(testInputJSON).then(data => console.log(data));
