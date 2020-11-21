@@ -59,8 +59,3 @@ function parseWinnerKeyData(inputJSON) {
         default: return false;
     }
 }
-
-//test lines
-let testInputJSON = {"winner" : 2, "year" : [1999, 2000, 2001, 2002], "category" : ["ACTOR IN A LEADING ROLE", "BEST PICTURE"]};
-
-combinedSearch(testInputJSON).then(data => console.log(data));
