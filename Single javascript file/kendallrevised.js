@@ -19,23 +19,22 @@ async function fetchOscarsData() {
 }
 
 function search(oscarsData, searchKey, query) {
-    let searchResult = [];    
+    let searchResult = [];
 
-    for(let i = 0; i < oscarsData.length; i++){
-        if(oscarsData[i][searchKey] == query){ 
-            searchResult.push(oscarsData[i]);         
-        }
-    }
+    oscarsData.forEach(element => {
+        if(element[searchKey] == query) searchResult.push(element);
+    });
 
     return searchResult;
 }
 
 function rangeSearch(oscarsData, searchKey, query){
     let result = [];
-
-    for (let i = 0; i <= query.length; i++)
-        result = result.concat(search(oscarsData, searchKey, query[i]));
     
+    query.forEach(element => {
+        result = result.concat(search(oscarsData, searchKey, element));
+    });
+
     return result;
 }
 
