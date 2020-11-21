@@ -1,6 +1,8 @@
 async function fetchOscarsData() {
     const database = './data.json';
-    const response = await fetch(database);
+    const response = await fetch(database)
+        .catch(error => console.warn('Something went wrong', error));
+
     const data = await response.json();
     return data;
 } 
