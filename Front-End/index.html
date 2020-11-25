@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="main-bg">
+        <section>
+            <header>
+                <a href="#">Little Bits</a>
+            </header>
+
+            <h1>Oscar Movie Nominations</h1>
+
+            <p>The ability to recieve access to oscer data</p>
+
+            <div class="form-containter">
+                <form action="">
+                    <div class="form"></div>
+                        <label for="m_name">Enter movie name or actor</label>
+                        <input type="text" name="m_name" id="m_name">
+                        <p>Example: "The Avengers" or "Robert Downey JR"</p>
+
+                        <div class="cat">
+                            <label for="cat">Category</label>
+                            <input type="checkbox" name="" id="">
+                            <label for="cat">War</label>
+                        </div>
+
+                        <div class="slidecontainer">
+                            <input type="range" min="1927" max="2017" value="50" class="slider" id="myRange">
+                            <p>Value: <span id="date"></span></p>
+                        </div>
+
+                        <div class="cd_w">
+                            <label for="cb_w"></label>
+                            <input type="checkbox" name="" id="">
+                            <label for="cb_w">Won</label>
+                            <input type="checkbox" name="" id="">
+                            <label for="cb_w">Loss</label>
+                        </div>
+
+                        <p></p>
+                        <input type="button" value="Search">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="JS/slider.js"></script>
+</body>
+</html>
