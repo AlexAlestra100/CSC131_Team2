@@ -1,14 +1,5 @@
-async function fetchOscarsData() {
-    const database = './data.json';
-    const response = await fetch(database)
-        .catch(error => console.warn('Something went wrong', error));
-
-    const data = await response.json();
-    return data;
-} 
- 
- async function combinedSearch(inputJSON) {
-    let result = await fetchOscarsData();
+function combinedSearch(inputJSON) {
+    let result =  require("./data.json");
 
     if( parseWinnerKeyData(inputJSON))                          result = search(result, "winner", inputJSON.winner);
     if( inputJSON.category)                                     result = rangeSearch(result, "category", inputJSON.category);
