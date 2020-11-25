@@ -15,17 +15,18 @@
 
             <h1>Oscar Movie Nominations</h1>
 
-            <p>The ability to recieve access to oscer data</p>
-
             <div class="form-containter">
                 <form action="">
                     <div class="form-left"></div>
-                        <label for="m_name">Enter movie name or actor</label>
-                        <input type="text" name="m_name" id="m_name">
-                        <p>Example: "The Avengers" or "Robert Downey JR"</p>
+                    
+                        <div class="head">
+                            <label for="m_name">Enter movie name or actor</label>
+                            <input type="text" name="m_name" id="m_name">
+                            <p>Example: "The Avengers" or "Robert Downey JR"</p>
+                        </div>
 
                         <div class="cat">
-                            <form action="/action_page.php">
+                            <form action="">
                                 <label for="cars"></label>
                                 <select name="cars" id="cars" multiple>
                                   <option value="volvo">Volvo</option>
@@ -35,16 +36,19 @@
                                 </select>
                               </form>
                         </div>
+                        
                         <div class="slidecontainer">
-                            <input type="range" min="1927" max="2017" value="50" class="slider" id="myRange">
-                            <p>Value: <span id="date"></span></p>
+                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                            <p>Value: <span id="data"></span></p>
                         </div>
 
-                        <label for="cb_w"></label>
-                        <input type="checkbox" name="" id="">
-                        <label for="cb_w">Won</label>
-                        <input type="checkbox" name="" id="">
-                        <label for="cb_w">Loss</label>
+                        <div class="cb"></div>
+                            <label for="cb_w"></label>
+                            <input type="checkbox" name="" id="">
+                            <label for="cb_w">Won</label>
+                            <input type="checkbox" name="" id="">
+                            <label for="cb_w">Loss</label>
+                        </div>
 
                         <p></p>
                         <input type="button" value="Search">
