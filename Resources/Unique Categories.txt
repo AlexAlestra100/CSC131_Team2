@@ -10,7 +10,7 @@
 ​​​
 5: "DIRECTING (Dramatic Picture)"
 ​​​
-6: "ENGINEERING EFFECTS"
+
 ​​​
 7: "OUTSTANDING PICTURE"
 ​​​
@@ -44,7 +44,7 @@
 ​​​
 22: "SHORT SUBJECT (Novelty)"
 ​​​
-23: "ASSISTANT DIRECTOR"
+
 ​​​
 24: "FILM EDITING"
 ​​​
@@ -66,7 +66,7 @@
 ​​​
 33: "SHORT SUBJECT (Two-reel)"
 ​​​
-34: "IRVING G. THALBERG MEMORIAL AWARD"
+
 ​​​
 35: "MUSIC (Original Score)"
 ​​​
@@ -106,11 +106,11 @@
 ​​​
 53: "COSTUME DESIGN (Color)"
 ​​​
-54: "SPECIAL FOREIGN LANGUAGE FILM AWARD"
+
 ​​​
 55: "WRITING (Story and Screenplay)"
 ​​​
-56: "HONORARY FOREIGN LANGUAGE FILM AWARD"
+
 ​​​
 57: "HONORARY AWARD"
 ​​​
@@ -120,7 +120,7 @@
 ​​​
 60: "WRITING (Screenplay--Original)"
 ​​​
-61: "JEAN HERSHOLT HUMANITARIAN AWARD"
+
 ​​​
 62: "COSTUME DESIGN"
 ​​​
@@ -190,7 +190,7 @@
 ​​​
 95: "SPECIAL ACHIEVEMENT AWARD (Sound Effects Editing)"
 ​​​
-96: "MEDAL OF COMMENDATION"
+
 ​​​
 97: "MUSIC (Adaptation Score)"
 ​​​
@@ -212,7 +212,7 @@
 ​​​
 106: "MAKEUP"
 ​​​
-107: "GORDON E. SAWYER AWARD"
+
 ​​​
 108: "SOUND EFFECTS EDITING"
 ​​​
@@ -230,7 +230,7 @@
 ​​​
 115: "MUSIC (Original Musical or Comedy Score)"
 ​​​
-116: "JOHN A. BONNER MEDAL OF COMMENDATION"
+
 ​​​
 117: "SOUND EDITING"
 ​​​
