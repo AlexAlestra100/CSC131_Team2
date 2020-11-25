@@ -1,6 +1,4 @@
-
- 
-  function combinedSearch(inputJSON) {
+function combinedSearch(inputJSON) {
     let result =  require('./testDataJson.json');
 
     if(parseWinnerKeyData(inputJSON))                           result = search(result, "winner", inputJSON.winner);
@@ -44,8 +42,3 @@ function parseWinnerKeyData(inputJSON) {
         default: return false;
     }
 }
-
-//test lines
-let testInputJSON = {"winner" : 1};
-
-console.log(combinedSearch(testInputJSON));
