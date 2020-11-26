@@ -32,11 +32,11 @@
 ​​​
 16: "SOUND RECORDING"
 ​​​
-17: "SCIENTIFIC OR TECHNICAL AWARD (Class I)"
+
 ​​​
-18: "SCIENTIFIC OR TECHNICAL AWARD (Class II)"
+
 ​​​
-19: "SCIENTIFIC OR TECHNICAL AWARD (Class III)"
+
 ​​​
 20: "SHORT SUBJECT (Cartoon)"
 ​​​
@@ -222,7 +222,7 @@
 ​​​
 111: "WRITING (Screenplay Based on Material Previously Produced or Published)"
 ​​​
-112: "SCIENTIFIC AND TECHNICAL AWARD (Academy Award of Merit)"
+
 ​​​
 113: "SCIENTIFIC AND TECHNICAL AWARD (Scientific and Engineering Award)"
 ​​​
@@ -244,4 +244,4 @@
 ​​​
 122: "PRODUCTION DESIGN"
 ​​​
-123: "SCIENTIFIC AND TECHNICAL AWARD (Special Award)"
+
