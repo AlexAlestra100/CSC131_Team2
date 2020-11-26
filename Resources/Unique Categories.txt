@@ -197,12 +197,11 @@
 98: "WRITING (Screenplay Based on Material from Another Medium)"
 ​​​
 99: "WRITING (Screenplay Written Directly for the Screen)"
+
 ​​​
-100: "SCIENTIFIC OR TECHNICAL AWARD (Academy Award of Merit)"
+
 ​​​
-101: "SCIENTIFIC OR TECHNICAL AWARD (Scientific and Engineering Award)"
-​​​
-102: "SCIENTIFIC OR TECHNICAL AWARD (Technical Achievement Award)"
+
 ​​​
 103: "MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score)"
 ​​​
@@ -224,9 +223,8 @@
 ​​​
 
 ​​​
-113: "SCIENTIFIC AND TECHNICAL AWARD (Scientific and Engineering Award)"
-​​​
-114: "SCIENTIFIC AND TECHNICAL AWARD (Technical Achievement Award)"
+
+
 ​​​
 115: "MUSIC (Original Musical or Comedy Score)"
 ​​​
