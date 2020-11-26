@@ -22,7 +22,7 @@
 ​​​
 11: "WRITING (Title Writing)"
 ​​​
-12: "SPECIAL AWARD"
+
 ​​​
 13: "DIRECTING"
 ​​​
@@ -217,7 +217,7 @@
 ​​​
 109: "MUSIC (Original Song Score or Adaptation Score)"
 ​​​
-110: "AWARD OF COMMENDATION"
+
 ​​​
 111: "WRITING (Screenplay Based on Material Previously Produced or Published)"
 ​​​
