@@ -22,7 +22,7 @@
 ​​​
 11: "WRITING (Title Writing)"
 ​​​
-12: "SPECIAL AWARD"
+
 ​​​
 13: "DIRECTING"
 ​​​
@@ -32,11 +32,11 @@
 ​​​
 16: "SOUND RECORDING"
 ​​​
-17: "SCIENTIFIC OR TECHNICAL AWARD (Class I)"
+
 ​​​
-18: "SCIENTIFIC OR TECHNICAL AWARD (Class II)"
+
 ​​​
-19: "SCIENTIFIC OR TECHNICAL AWARD (Class III)"
+
 ​​​
 20: "SHORT SUBJECT (Cartoon)"
 ​​​
@@ -112,7 +112,7 @@
 ​​​
 
 ​​​
-57: "HONORARY AWARD"
+
 ​​​
 58: "FOREIGN LANGUAGE FILM"
 ​​​
@@ -197,12 +197,11 @@
 98: "WRITING (Screenplay Based on Material from Another Medium)"
 ​​​
 99: "WRITING (Screenplay Written Directly for the Screen)"
+
 ​​​
-100: "SCIENTIFIC OR TECHNICAL AWARD (Academy Award of Merit)"
+
 ​​​
-101: "SCIENTIFIC OR TECHNICAL AWARD (Scientific and Engineering Award)"
-​​​
-102: "SCIENTIFIC OR TECHNICAL AWARD (Technical Achievement Award)"
+
 ​​​
 103: "MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score)"
 ​​​
@@ -218,15 +217,14 @@
 ​​​
 109: "MUSIC (Original Song Score or Adaptation Score)"
 ​​​
-110: "AWARD OF COMMENDATION"
+
 ​​​
 111: "WRITING (Screenplay Based on Material Previously Produced or Published)"
 ​​​
-112: "SCIENTIFIC AND TECHNICAL AWARD (Academy Award of Merit)"
+
 ​​​
-113: "SCIENTIFIC AND TECHNICAL AWARD (Scientific and Engineering Award)"
-​​​
-114: "SCIENTIFIC AND TECHNICAL AWARD (Technical Achievement Award)"
+
+
 ​​​
 115: "MUSIC (Original Musical or Comedy Score)"
 ​​​
@@ -244,4 +242,4 @@
 ​​​
 122: "PRODUCTION DESIGN"
 ​​​
-123: "SCIENTIFIC AND TECHNICAL AWARD (Special Award)"
+
