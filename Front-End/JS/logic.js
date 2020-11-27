@@ -6,4 +6,3 @@ slider.oninput = function()
 {
   output.innerHTML = this.value;
 }
-
