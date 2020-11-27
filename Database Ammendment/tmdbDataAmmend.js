@@ -22,7 +22,7 @@ async function tDataAmmend(database){
         
         let resLength = dat.results.length;
 
-        if (dat.results !== 0){
+        if (dat.results.length !== 0){
         for(let r = 0; r < resLength; r++){
             if(dat.results[r].hasOwnProperty('release_date')){
             let resDateString = dat.results[r].release_date
