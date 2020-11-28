@@ -37,7 +37,7 @@ function parseDateString(dateString){
 }
     
 async function tDataAmmend(database){
-    for(let d = 5000; d < 5500; d++){
+    for(let d = 0; d < 100; d++){
         dat = await tmdb_keywordSearch("movie", database[d].entity);
         
         let resLength = dat.results.length;        
@@ -73,8 +73,42 @@ async function personSearch(database){
 
     if(dat.results.length){
         for(let r = 0; r < dat.results.length; r++){
+            let dat3 = await creditSearch(dat.results[r].id);
+            for(let cast = 0; cast < dat3.cast.length; cast++){
+                if(dat3.cast[cast].hasOwnProperty('release_date')){
+                    let resYearNum = parseDateString(dat3.cast[cast].release_date);
+
+                    if(database.year === resYearNum){
+                        database.tid = dat3.cast[cast].id;
+                        
+                        let dat2 = await tmdb_searchByID("movie", database.tid);
+                        
+                        database.imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
+                        database.movie = dat2.title;
+                        
+                        return database;
+                    }
+                }
+            }
             
-            for(let k = 0; k < dat.results[r].known_for.length; k++){
+            for(let crew = 0; crew < dat3.crew[crew].length; crew++){
+                if(dat3.crew[crew].hasOwnProperty('release_date')){
+                    let resYearNum = parseDateString(dat3.crew[crew].release_date);
+
+                    if(database.year === resYearNum){
+                        database.tid = dat3.cast[cast].id;
+                        
+                        let dat2 = await tmdb_searchByID("movie", database.tid);
+                        
+                        database.imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
+                        database.movie = dat2.title;
+                        
+                        return database;
+                    }
+                }
+            }
+            
+           /* for(let k = 0; k < dat.results[r].known_for.length; k++){
                 
                 if(dat.results[r].known_for[k].hasOwnProperty('release_date')){
                     let resYearNum = parseDateString(dat.results[r].known_for[k].release_date);                    
@@ -90,11 +124,20 @@ async function personSearch(database){
                         return database;
                     }
                 }
-            }                 
+            }*/                 
         }
     }  
     
     return database;
+}
+
+async function creditSearch(personID){
+    let movieUrl = "https://api.themoviedb.org/3/person/" + personID + "/movie_credits?api_key=" + apiKey;
+
+    let res = await fetch(movieUrl);
+    let dat = await res.json();
+
+    return dat; 
 }
 
 async function testThisShit(){
