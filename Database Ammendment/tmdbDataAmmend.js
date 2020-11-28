@@ -20,9 +20,8 @@ async function tmdb_keywordSearch(searchType, keyword){
 }
 
 async function tmdb_searchByID(searchType, tmdb_ID){    
-    let movieUrl = "https://api.themoviedb.org/3/" + searchType + "?api_key=" + apiKey;
+    let movieUrl = "https://api.themoviedb.org/3/" + searchType + "/" + tmdb_ID + "?api_key=" + apiKey;
     
-    movieUrl += "&query=" + keyword;
     
     let res = await fetch(movieUrl);
     let dat = await res.json();
