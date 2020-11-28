@@ -139,14 +139,7 @@ async function creditSearch(personID){
 
     return dat; 
 }
-async function crewSearch(personID){
-        let movieUrl = "https://api.themoviedb.org/3/person/" + personID + "/movie_credits?api_key=" + apiKey;
 
-    let res = await fetch(movieUrl);
-    let dat = await res.json();
-
-    return dat;
-}
 
 async function testThisShit(){
     let data = await dRetrieval();
