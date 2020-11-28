@@ -37,7 +37,7 @@ function parseDateString(dateString){
 }
     
 async function tDataAmmend(database){
-    for(let d = 5000; d < 5050; d++){
+    for(let d = 5000; d < 5500; d++){
         dat = await tmdb_keywordSearch("movie", database[d].entity);
         
         let resLength = dat.results.length;        
@@ -82,7 +82,7 @@ async function personSearch(database){
                     if(database.year === resYearNum){
                         database.tid = dat.results[r].known_for[k].id;
                         
-                        let dat2 = await tmdb_searchByID("person", database.tid);
+                        let dat2 = await tmdb_searchByID("movie", database.tid);
                         
                         database.imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
                         database.movie = dat2.title;
@@ -101,7 +101,7 @@ async function testThisShit(){
     let data = await dRetrieval();
 
     let ammend = await tDataAmmend(data);
-
+    
     return ammend;
 } 
 
