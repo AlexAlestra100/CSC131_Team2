@@ -1,5 +1,5 @@
 async function dRetrieval(){
-    const database = 'data.json';
+    const database = 'NewJSON.json';
     const response = await fetch(database);
     const data = await response.json();
 
