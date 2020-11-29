@@ -11,9 +11,7 @@ var appRouter = function(app){
     
     app.get("/test",function(req,res){
         res.status(200).send(search(testObj));
-    });
-
-    
+    });    
 }
 
 module.exports = appRouter;
