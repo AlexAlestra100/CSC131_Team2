@@ -46,7 +46,7 @@ function parseDateString(dateString){
 }
     
 async function tDataAmmend(database){
-    for(let d = 0; d < 100; d++){
+    for(let d = 0; d < database.length; d++){
         dat = await tmdb_keywordSearch("movie", database[d].entity);
         
         let resLength = dat.results.length;        
