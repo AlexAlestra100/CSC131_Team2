@@ -29,4 +29,3 @@ var appRouter = function(app){
 }
 
 module.exports = appRouter;
->>>>>>> 6611cb4d6bd6b93a4fc9b1b147415debd1769510:rest.api/routes.js
