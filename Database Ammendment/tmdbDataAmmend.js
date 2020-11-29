@@ -1,124 +1,152 @@
-
 async function dRetrieval(){
-const database = 'oscar.json';
-const response = await fetch(database);
-const data = await response.json();
+    const database = 'NewJSON.json';
+    const response = await fetch(database);
+    const data = await response.json();
 
-tDataAmmend(data);
+    return data;
 }
 
-async function tDataAmmend(database){
-    const apiKey = "2c1f532b5ae9cd29e9cd937bcc1861b7";
+const apiKey = "2c1f532b5ae9cd29e9cd937bcc1861b7";
+
+async function tmdb_keywordSearch(searchType, keyword){    
+    let movieUrl = "https://api.themoviedb.org/3/search/" + searchType + "?api_key=" + apiKey;
     
-
-    for(let d = 0; d < database.length; d++){
-
-        let movieUrl = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey;
-
-        movieUrl += "&query=" + database[d].entity;
-
-        let res = await fetch(movieUrl);
-        let dat = await res.json();
-        
-        let resLength = dat.results.length;
-
-        if (dat.results.length !== 0){
-        for(let r = 0; r < resLength; r++){
-            if(dat.results[r].hasOwnProperty('release_date')){
-            let resDateString = dat.results[r].release_date
-            let resYearString = resDateString.slice(0,4);
-            
-
-            let resYearNum = parseInt(resYearString, 10);
-            
-
-            if(database[d].year === resYearNum){
-                database[d].tid = dat.results[r].id;
-                
-                movieUrl = "https://api.themoviedb.org/3/movie/" + dat.results[r].id + "?api_key=" + apiKey;
-            
-                res = await fetch(movieUrl);
-                dat = await res.json();
-
-                database[d].imdbLink = "https://www.imdb.com/title/" + dat.id;
-                database[d].movie = dat.title;
-                
-            }
-            
-        } 
-        
-        }
-        let pd = personSearch(database[d]);
-        database[d].tid = pd.tid;
-        database[d].imdbLink = pd.imdbLink;
-        database[d].imdbLink = pd.imdbLink;
-
-    }
-    else{
-        let pd = personSearch(database[d]);
-        
-        database[d].tid = pd.tid;
-        database[d].movie = pd.movie;
-        database[d].imdbLink = pd.imdbLink;
-    }
-
-}
-    console.log(database);
-    console.log('done');
-
-}
-
-async function personSearch(database){
-    const apiKey = "2c1f532b5ae9cd29e9cd937bcc1861b7";
-    
-    let movieUrl = "https://api.themoviedb.org/3/search/person?api_key=" + apiKey;
-    
-    movieUrl += "&query=" + database.entity;
+    movieUrl += "&query=" + keyword;
     
     let res = await fetch(movieUrl);
     let dat = await res.json();
 
-    if(dat.results !== null){
-        for(let r = 0; r < dat.results.length; r++){
-            if(dat.results[r].known_for !== null){
-            for(let k = 0; k < dat.results[r].known_for.length; k++){
-                if(dat.results[r].known_for[k].hasOwnProperty('release_date')){
-                let resDateString = dat.results[r].known_for[k].release_date
-                let resYearString = resDateString.slice(0,4);
-                let resYearNum = parseInt(resYearString, 10);
-                
-
-                if(dat.year === resYearNum){
-                    database.tid = dat.results[r].known_for[k].id;
-                    
-                    movieUrl = "https://api.themoviedb.org/3/movie/" + dat.results[r].known_for[k].id + "?api_key=" + apiKey;
-
-                    res = await fetch(movieUrl);
-                    dat = await res.json();
-                    
-                    database.imdbLink = "https://www.imdb.com/title/" + dat.id;
-                    database.movie = dat.title;
-                    return database;
-                }
-                else{
-                    database.movie = 0;
-                    return database;
-                }
-            }
-            }
-            
-        }else{database.movie = 0; return database;}
-        
-    }
-    }
-    else{
-        database.movie = 0;
-        return database;
-    }
-
-    
-
+    return dat;
 }
 
-dRetrieval();
+async function tmdb_searchByID(searchType, tmdb_ID){    
+    let movieUrl = "https://api.themoviedb.org/3/" + searchType + "/" + tmdb_ID + "?api_key=" + apiKey;
+    
+    
+    let res = await fetch(movieUrl);
+    let dat = await res.json();
 
+    return dat;
+}
+
+function parseDateString(dateString){
+    let resDateString = dateString
+    let resYearString = resDateString.slice(0,4);
+
+    return parseInt(resYearString, 10);
+}
+    
+async function tDataAmmend(database){
+    for(let d = 0; d < 100; d++){
+        dat = await tmdb_keywordSearch("movie", database[d].entity);
+        
+        let resLength = dat.results.length;        
+        
+        if(resLength){
+            for(let r = 0; r < resLength; r++){
+                if(dat.results[r].hasOwnProperty('release_date')){
+                    let resYearNum = parseDateString(dat.results[r].release_date);
+
+                    if(database[d].year === resYearNum){
+                        database[d].tid = dat.results[r].id;
+                        database[d].movie = dat.results[r].title;
+                        
+                        let dat2 = await tmdb_searchByID("movie", dat.results[r].id);
+
+                        database[d].imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
+                    }                        
+                }
+            }
+        }
+
+        else{
+            database[d] = await personSearch(database[d]);
+        }
+    }
+    
+    return database;
+}   
+
+async function personSearch(database){
+
+    dat = await tmdb_keywordSearch("person", database.entity);
+
+    if(dat.results.length){
+        for(let r = 0; r < dat.results.length; r++){
+            let dat3 = await creditSearch(dat.results[r].id);
+            for(let cast = 0; cast < dat3.cast.length; cast++){
+                if(dat3.cast[cast].hasOwnProperty('release_date')){
+                    let resYearNum = parseDateString(dat3.cast[cast].release_date);
+
+                    if(database.year === resYearNum){
+                        database.tid = dat3.cast[cast].id;
+                        
+                        let dat2 = await tmdb_searchByID("movie", database.tid);
+                        
+                        database.imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
+                        database.movie = dat2.title;
+                        
+                        return database;
+                    }
+                }
+            }
+            
+            for(let crew = 0; crew < dat3.crew[crew].length; crew++){
+                if(dat3.crew[crew].hasOwnProperty('release_date')){
+                    let resYearNum = parseDateString(dat3.crew[crew].release_date);
+
+                    if(database.year === resYearNum){
+                        database.tid = dat3.cast[cast].id;
+                        
+                        let dat2 = await tmdb_searchByID("movie", database.tid);
+                        
+                        database.imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
+                        database.movie = dat2.title;
+                        
+                        return database;
+                    }
+                }
+            }
+            
+           /* for(let k = 0; k < dat.results[r].known_for.length; k++){
+                
+                if(dat.results[r].known_for[k].hasOwnProperty('release_date')){
+                    let resYearNum = parseDateString(dat.results[r].known_for[k].release_date);                    
+
+                    if(database.year === resYearNum){
+                        database.tid = dat.results[r].known_for[k].id;
+                        
+                        let dat2 = await tmdb_searchByID("movie", database.tid);
+                        
+                        database.imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
+                        database.movie = dat2.title;
+                        
+                        return database;
+                    }
+                }
+            }*/                 
+        }
+    }  
+    
+    return database;
+}
+
+async function creditSearch(personID){
+    let movieUrl = "https://api.themoviedb.org/3/person/" + personID + "/movie_credits?api_key=" + apiKey;
+
+    let res = await fetch(movieUrl);
+    let dat = await res.json();
+
+    return dat; 
+}
+
+
+async function testThisShit(){
+    let data = await dRetrieval();
+
+    let ammend = await tDataAmmend(data);
+    
+    return ammend;
+} 
+
+testThisShit().then(data => console.log(data));
