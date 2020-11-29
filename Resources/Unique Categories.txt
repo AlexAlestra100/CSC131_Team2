@@ -162,7 +162,7 @@
 ​​​
 81: "SHORT SUBJECT (Animated)"
 ​​​
-82: "SPECIAL ACHIEVEMENT AWARD (Visual Effects)"
+
 ​​​
 83: "MUSIC (Scoring: Original Song Score and Adaptation -or- Scoring: Adaptation)"
 ​​​
@@ -188,7 +188,7 @@
 ​​​
 94: "SPECIAL ACHIEVEMENT AWARD"
 ​​​
-95: "SPECIAL ACHIEVEMENT AWARD (Sound Effects Editing)"
+
 ​​​
 
 ​​​
