@@ -1,0 +1,19 @@
+function findYear()
+{
+    var yearStart = document.getElementById('m_start');
+    var yearEnd = document.getElementById('m_end');
+     
+    var years = [];
+    
+    for(var i = yearStart; i <= yearEnd; i++)
+    {
+        years.push(i);
+    }
+    return years;
+}
+
+var userI = new Object();
+userI.name = document.getElementById('m_name');
+userI.cat = document.getElementById('cat');
+userI.year = findYear();
+userI.box = document.getElementById('wol');

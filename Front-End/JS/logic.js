@@ -1,18 +1,11 @@
-function findYear()
-{
-    var yearStart = document.getElementById('m_start');
-    var yearEnd = document.getElementById('m_end');
-    
-    for(var i = yearStart; i <= yearEnd; i++)
-    {
-        years.push(i);
-    }
-}
+var st = document.getElementById('cats');
+var nd = document.getElementById('m_end');
+var results = document.getElementById('res');
+var form = document.getElementById('acc');
 
-fucntion result()
+form.addEventListener('submit', function()
 {
-    var name = document.getElementById('m_name');
-    var categories = document.getElementById('cars');
-    var year = findYear();
-    var wol = document.getElementById('wol');
-}
+    var a = st.value;
+
+    alert(a);
+});

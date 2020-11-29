@@ -16,51 +16,46 @@
             <h1>Oscar Movie Nominations</h1>
 
             <div class="form-containter">
-                <form action="">
-                    <div class="form-left"></div>
-                    
-                        <div class="head">
+                <form id="acc">
+
                             <label for="m_name">Enter movie name or actor</label>
                             <input type="text" name="m_name" id="m_name">
-                            <p>Example: "The Avengers" or "Robert Downey JR"</p>
-                        </div>
+                            <p id="exmp">Example: "The Avengers" or "Robert Downey JR"</p>
+
 
                         <p>Categories</p>
 
-                        <div class="cat">
-                            <form action="">
+
                                 <label for="cars"></label>
-                                <select name="cars" id="cars" multiple>
+                                <select name="cats" id="cats" multiple>
                                   <option value="volvo">Volvo</option>
                                   <option value="saab">Saab</option>
                                   <option value="opel">Opel</option>
                                   <option value="audi">Audi</option>
-                                  <option value="volvo">Volvo</option>
-                                  <option value="volvo">Volvo</option>
-                                  <option value="volvo">Volvo</option>
-                                  <option value="volvo">Volvo</option>
                                 </select>
-                              </form>
-                        </div>
+
+
 
                         <p>Year</p>
                         
-                        <div class="yearto">
+
                             <input type="text" name="ystart" maxlength="4" id="m_start">
                             <label for="m_year"> to </label>
                             <input type="text" name="yend" maxlength="4" id="m_end">
-                        </div>
 
-                        <div class="cb"></div>
+
+
                             <p>Did they win or lose?</p>
                             <select name="wol" id="wol">
                                 <option value="win">Win</option>
                                 <option value="lose">Lose</option>
                             </select>
-                        </div>
+
 
                         <p></p>
-                        <input type="button" value="Search">
+                        <input type="submit" value="Search">
+                        <p></p>
+                        <h3 id="res"></h3>
                     </div>
                 </form>
             </div>
