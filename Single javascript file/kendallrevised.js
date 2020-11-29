@@ -1,5 +1,5 @@
 function combinedSearch(inputJSON) {
-    let result =  require("./data.json");
+    let result = require("./data.json");
 
     if( parseWinnerKeyData(inputJSON))                          result = search(result, "winner", inputJSON.winner);
     if( inputJSON.category)                                     result = rangeSearch(result, "category", inputJSON.category);
@@ -51,3 +51,5 @@ function parseWinnerKeyData(inputJSON) {
         default: return false;
     }
 }
+
+module.exports = combinedSearch;
