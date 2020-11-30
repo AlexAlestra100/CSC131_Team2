@@ -1,12 +1,16 @@
 0: "ACTOR"
 
 89: "ACTOR IN A LEADING ROLE"
+
+GENERAL: "ACTOR IN A LEADING ROLE"
 ​​​
 
 
 1: "ACTRESS"
 
 90: "ACTRESS IN A LEADING ROLE"
+
+GENERAL: "ACTRESS IN A LEADING ROLE"
 
 
 
@@ -72,6 +76,8 @@
 
 105: "SHORT FILM (Dramatic Live Action)"
 
+GENERAL: "SHORT FILM"
+
 
 
 58: "FOREIGN LANGUAGE FILM"
@@ -104,6 +110,8 @@
 
 99: "WRITING (Screenplay Written Directly for the Screen)"
 
+GENERAL: WRITING (Original)
+
 
 ​​​
 9: "WRITING (Adaptation)"
@@ -119,6 +127,8 @@
 111: "WRITING (Screenplay Based on Material Previously Produced or Published)"
 
 119: "WRITING (Adapted Screenplay)"
+
+GENERAL: WRITING (Adaptation)
 
 
 
