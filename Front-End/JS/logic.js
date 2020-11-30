@@ -52,7 +52,16 @@ form.addEventListener('submit', function(event)
     var nend = parseFloat(yearEnd.value);
      
     var years = [];
-    
+
+    if(nstart < 1927 || !nstart)
+    {
+        nstart = 1927;
+    }
+    else if(nend > 2017 || !nend)
+    {
+        nend = 2017;
+    }
+
     for(var i = nstart; i <= nend; i++)
     {
         years.push(i);
