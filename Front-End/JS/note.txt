@@ -1,19 +1,59 @@
-function findYear()
+var form = document.getElementById('acc');
+var yearStart = document.getElementById('m_start');
+var yearEnd = document.getElementById('m_end');
+var name = document.getElementById("m_name");
+//var cat = document.getElementById("cats");
+var bx = document.getElementById("wol");
+
+function findYear(yearStart, yearEnd)
 {
-    var yearStart = document.getElementById('m_start');
-    var yearEnd = document.getElementById('m_end');
+    var nstart = parseFloat(yearStart.value);
+    var nend = parseFloat(yearEnd.value);
+
+    if(nstart < 1927)
+    {
+        nstart = 1927;
+    }
+    else if(nend > 2017)
+    {
+        nend = 2017;
+    }
      
     var years = [];
     
-    for(var i = yearStart; i <= yearEnd; i++)
+    for(var i = nstart; i <= nend; i++)
     {
         years.push(i);
     }
     return years;
 }
 
-var userI = new Object();
-userI.name = document.getElementById('m_name');
-userI.cat = document.getElementById('cat');
-userI.year = findYear();
-userI.box = document.getElementById('wol');
+function winOlose(bx)
+{
+    if(bx.value == "Win")
+    {
+        return true;
+    }
+    else if(bx.value == "Lose")
+    {
+        return false;
+    }
+    else
+    {
+        return null;
+    }
+}
+
+form.addEventListener('submit', function()
+{
+    var movie = new Object();
+    movie.m_name = name.value;
+    movie.m_actor = name.value;
+    //movie.categ = cat.value;
+    movie.dates = findYear();
+    movie.wol = winOlose();
+
+    console.log(movie);
+
+    alert("CLICK!");
+});

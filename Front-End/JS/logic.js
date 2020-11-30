@@ -1,11 +1,64 @@
-var st = document.getElementById('cats');
-var nd = document.getElementById('m_end');
-var results = document.getElementById('res');
 var form = document.getElementById('acc');
+var yearStart = document.getElementById('m_start');
+var yearEnd = document.getElementById('m_end');
+var mname = document.getElementById("m_name");
+//var cat = document.getElementById("cats");
+var bx = document.getElementById("wol");
 
-form.addEventListener('submit', function()
+function findYear(yearStart, yearEnd)
 {
-    var a = st.value;
+    var nstart = parseFloat(yearStart.value);
+    var nend = parseFloat(yearEnd.value);
 
-    alert(a);
+    /*if(nstart < 1927)
+    {
+        nstart = 1927;
+    }
+    else if(nend > 2017)
+    {
+        nend = 2017;
+    }*/
+     
+    var years = [];
+    
+    for(var i = nstart; i <= nend; i++)
+    {
+        years.push(i);
+    }
+    return years;
+}
+
+function winOlose(bx)
+{
+    if(bx.value == "Win")
+    {
+        return true;
+    }
+    else if(bx.value == "Lose")
+    {
+        return false;
+    }
+    else
+    {
+        return null;
+    }
+}
+
+form.addEventListener('submit', function(event)
+{
+    var nstart = parseFloat(yearStart.value);
+    var nend = parseFloat(yearEnd.value);
+     
+    var years = [];
+    
+    for(var i = nstart; i <= nend; i++)
+    {
+        years.push(i);
+    }
+
+    var movie ={dates: years};
+
+    console.log(movie.dates);
+
+    event.preventDefault();
 });
