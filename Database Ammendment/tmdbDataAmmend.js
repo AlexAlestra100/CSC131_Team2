@@ -51,25 +51,25 @@ async function tDataAmmend(database){
         
         let resLength = dat.results.length;        
         
-        if(resLength){
-            for(let r = 0; r < resLength; r++){
-                if(dat.results[r].hasOwnProperty('release_date')){
-                    let resYearNum = parseDateString(dat.results[r].release_date);
+        
+        for(let r = 0; r < resLength; r++){
+            if(dat.results[r].hasOwnProperty('release_date')){
+                let resYearNum = parseDateString(dat.results[r].release_date);
 
-                    if(database[d].year === resYearNum){
-                        database[d].tid = dat.results[r].id;
-                        database[d].movie = dat.results[r].title;
-                        database[d].poster = dat.results[r].poster_path;
-                        
-                        let dat2 = await tmdb_searchByID("movie", dat.results[r].id);
+                if(database[d].year === resYearNum){
+                    database[d].tid = dat.results[r].id;
+                    database[d].movie = dat.results[r].title;
+                    database[d].poster = dat.results[r].poster_path;
+                    
+                    let dat2 = await tmdb_searchByID("movie", dat.results[r].id);
 
-                        database[d].imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
-                    }                        
-                }
+                    database[d].imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
+                }                        
             }
         }
+        
 
-        else{
+        if(!database[d].hasOwnProperty('tid')){
             database[d] = await personSearch(database[d]);
         }
     }
