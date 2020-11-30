@@ -44,6 +44,8 @@ function winOlose(bx)
     }
 }
 
+//must do all coding within the below function and objects work now!
+
 form.addEventListener('submit', function(event)
 {
     var nstart = parseFloat(yearStart.value);
