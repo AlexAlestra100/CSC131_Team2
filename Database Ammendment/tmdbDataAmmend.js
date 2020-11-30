@@ -59,6 +59,7 @@ async function tDataAmmend(database){
                     if(database[d].year === resYearNum){
                         database[d].tid = dat.results[r].id;
                         database[d].movie = dat.results[r].title;
+                        database[d].poster = dat.results[r].poster_path;
                         
                         let dat2 = await tmdb_searchByID("movie", dat.results[r].id);
 
@@ -93,6 +94,7 @@ async function personSearch(database){
 
                         if(database.year === resYearNum){
                             database.tid = dat3.cast[cast].id;
+                            database.poster = dat3.cast[cast].poster_path;
                             
                             let dat2 = await tmdb_searchByID("movie", database.tid);
                             
@@ -105,15 +107,16 @@ async function personSearch(database){
                 }
             }
             
-            else if(dat3.hasOwnProperty('crew')){
-                for(let crew = 0; crew < dat3.crew[crew].length; crew++){
-                    
+            if(!database.hasOwnProperty('movie') && dat3.hasOwnProperty('crew')){
+                for(let crew = 0; crew < dat3.crew.length; crew++){
+
                     if(dat3.crew[crew].hasOwnProperty('release_date')){
                         let resYearNum = parseDateString(dat3.crew[crew].release_date);
 
                         if(database.year === resYearNum){
-                            database.tid = dat3.cast[cast].id;
-                            
+                            database.tid = dat3.crew[crew].id;
+                            database.poster = dat3.crew[crew].poster_path;
+
                             let dat2 = await tmdb_searchByID("movie", database.tid);
                             
                             database.imdbLink = "https://www.imdb.com/title/" + dat2.imdb_id;
