@@ -4,7 +4,6 @@ var yearEnd = document.getElementById('m_end');
 var mname = document.getElementById("m_name");
 var bx = document.getElementById("wol");
 
-
 form.addEventListener('submit', function(event)
 {
     var nstart = parseFloat(yearStart.value);
