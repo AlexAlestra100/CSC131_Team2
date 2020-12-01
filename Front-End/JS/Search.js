@@ -47,19 +47,17 @@ form.addEventListener('submit', function(event)
 
     var movie =
     {
-        name: mname.value,
-        actor: mname.value,
+        entity: mname.value,
         categ: selected,
         dates: years,
         winlose: wlose
     };
-    /*
-    console.log(movie.name);
-    console.log(movie.actor);
+    ///*
+    console.log(movie.entity);
     console.log(movie.categ);
     console.log(movie.dates);
     console.log(movie.winlose);
 
     event.preventDefault();
-    */
+    //*/
 });
