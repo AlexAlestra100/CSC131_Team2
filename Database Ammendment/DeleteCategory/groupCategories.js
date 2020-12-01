@@ -11,25 +11,22 @@ const general_cat =
     ["CINEMATOGRAPHY","CINEMATOGRAPHY","CINEMATOGRAPHY (Black-and-White)","CINEMATOGRAPHY (Color)"],
     ["ART DIRECTION","ART DIRECTION","ART DIRECTION (Black-and-White)","ART DIRECTION (Color)"],
     ["OUTSTANDING PRODUCTION","OUTSTANDING PRODUCTION","PRODUCTION DESIGN"],
-    ["EFFECTS","SPECIAL EFFECTS","SPECIAL VISUAL EFFECTS","VISUAL EFFECTS"]
-  // ["MAKEUP", "MAKEUP","MAKEUP AND HAIRSTYLING"​​​],
-    //["COSTUME","COSTUME DESIGN (Black-and-White)","COSTUME DESIGN (Color)"​​​,"COSTUME DESIGN"],
-   // ["SOUND","SOUND RECORDING"​​​,"SOUND","SOUND EFFECTS","SOUND EFFECTS EDITING","SOUND EDITING","SOUND MIXING"],
-   // [ "DOC" , "DOCUMENTARY (Short Subject)" , "DOCUMENTARY" , "DOCUMENTARY (Feature)"​ ]​​
+    ["EFFECTS","SPECIAL EFFECTS","SPECIAL VISUAL EFFECTS","VISUAL EFFECTS"],
+    /*["MAKEUP", "MAKEUP", "MAKEUP AND HAIRSTYLING"​​​],
+    ["COSTUME","COSTUME DESIGN (Black-and-White)","COSTUME DESIGN (Color)"​​​,"COSTUME DESIGN"],
+    ["SOUND","SOUND RECORDING"​​​,"SOUND","SOUND EFFECTS","SOUND EFFECTS EDITING","SOUND EDITING","SOUND MIXING"],
+    [ "DOC" , "DOCUMENTARY (Short Subject)" , "DOCUMENTARY" , "DOCUMENTARY (Feature)"​]​​*/
 ];
  
 var fs  = require("fs");
 //const { stringify } = require("querystring");
 // var gracefulFs = require("graceful-fs");
 // gracefulFs.gracefulify(fs);
-var data= require("./RemoveData.json");
+var data= require("./NewJSON.json");
 
 
 function groupCategories()
 {
-    
-    //let increment = 0;
-    let inc = 0;
     
 for(let i = 0; i < general_cat.length; i++)
 {
@@ -37,20 +34,18 @@ for(let i = 0; i < general_cat.length; i++)
     for(let j = 0; j < general_cat[i].length; j++)
     {
         var key = general_cat[i][0];
-        
-        inc++;
-
+    
         let newkey = {"general_cat" : key};
 
         
       for(let k = 0; k < data.length; k++)
       {
           
-                if(data[k].category == general_cat[i][inc] )
+                if(data[k].category === general_cat[i][j] )
                 {
                 Object.assign(data[k], newkey);
             
-                fs.writeFile("./groupedData.json", JSON.stringify(data), (err) => {     // adds more content then needed but manualy deleted it 
+                fs.writeFile(data, JSON.stringify(data), (err) => {     // adds more content then needed but manualy deleted it 
                     if (err) {                                                          
                         console.error(err);
                         return;
@@ -59,10 +54,6 @@ for(let i = 0; i < general_cat.length; i++)
                  });
 
                 };
-                if(inc > general_cat[i].length)
-                {
-                    inc = 1;
-                }
         }
         
         
