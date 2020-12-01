@@ -1,5 +1,5 @@
 async function dRetrieval(){
-    const database = 'data.json';
+    const database = 'groupedData.json';
     const response = await fetch(database);
     const data = await response.json();
 
