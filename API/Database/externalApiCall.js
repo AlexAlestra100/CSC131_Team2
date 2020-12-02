@@ -32,10 +32,10 @@ function singleton(singleSearch){
 
 
             }
-        })
+        });
     //fetch watch providers
     tmdbUrl = 'https://api.themoviedb.org/3/movie/' + singleSearch.tid + '/watch/providers?api_key=' + tmdbKey;
-    return fetch(tmdbUrl)
+    fetch(tmdbUrl)
     .then(res => res.json())
     .then(json => {
         if(!json.results.hasOwnProperty('US')){
@@ -44,8 +44,10 @@ function singleton(singleSearch){
         else{
             singleSearch.watchProvider = json.results.US.link;
             }
-        return singleSearch;
-    });
+        
+    })
+    
+    
 }
 
 
