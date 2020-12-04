@@ -29,7 +29,7 @@ var appRouter = function(app){
 
         //queryOBJ = validate(queryOBJ);
         
-        res.status(200).send(search(queryOBJ));
+        res.status(200).send(queryOBJ);
     });
 }
 
