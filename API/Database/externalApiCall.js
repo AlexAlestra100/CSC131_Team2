@@ -47,9 +47,6 @@ async function singleton(singleSearch){
 async function singletonDeliver(someObject){
     let data = await singleton(someObject);
 
+    module.exports = singletonDeliver;
     return data;
 }
-
-let testObj = {"movie": "The Patent Leather Kid", "tid": 68718}
-
-singletonDeliver(testObj).then(data => console.log(data));
