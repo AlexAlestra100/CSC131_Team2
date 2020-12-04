@@ -65,12 +65,31 @@ form.addEventListener('submit', function(event)
     movie.dates = years;
     movie.winlose = wlose;
 
-    ///*
+    /*
     console.log(movie.entity);
     console.log(movie.categ);
     console.log(movie.dates);
     console.log(movie.winlose);
-
+    */
     event.preventDefault();
-    //*/
 });
+
+async function getData()
+{
+    //make functions to separate the years and categories into single lines.
+
+    
+
+    var api_URL = 'localhost:3000/search/?';
+    
+    const response = await fetch(api_URL);
+    const data = await response.json();
+
+    /*
+    const {latitude, longitude} = data;
+    document.getElementById('lat').textContent = latitude;
+    document.getElementById('lon').textContent = longitude;
+    */
+}
+
+//getData();
