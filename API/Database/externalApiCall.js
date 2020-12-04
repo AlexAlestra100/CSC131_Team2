@@ -44,7 +44,7 @@ function singleton(singleSearch){
         else{
             singleSearch.watchProvider = json.results.US.link;
             }
-        
+            
     })
     
     
