@@ -1,3 +1,4 @@
+//Pull user input
 var form = document.getElementById('acc');
 var yearStart = document.getElementById('m_start');
 var yearEnd = document.getElementById('m_end');
@@ -5,7 +6,7 @@ var mname = document.getElementById("m_name");
 var bx = document.getElementById("wol");
 
 form.addEventListener('submit', function(event)
-{
+{   //Function to find years and push on array
     var nstart = parseFloat(yearStart.value);
     var nend = parseFloat(yearEnd.value);
      
@@ -24,7 +25,7 @@ form.addEventListener('submit', function(event)
     {
         years.push(i);
     }
-
+    //User input whether they won or not
     var wlose;
 
     if(bx.value == "Win")
@@ -35,7 +36,7 @@ form.addEventListener('submit', function(event)
     {
         wlose = false;
     }
-
+    //Initiate category array and user input on array
     var selected = [];
 
     for(var option of document.getElementById('cats').options) {
@@ -44,7 +45,7 @@ form.addEventListener('submit', function(event)
             selected.push(option.value);
         }
     }
-
+    //Object 
     var movie =
     {
         entity: mname.value,
