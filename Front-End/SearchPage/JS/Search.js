@@ -5,6 +5,7 @@ var yearEnd = document.getElementById('m_end');
 var mname = document.getElementById("m_name");
 var bx = document.getElementById("wol");
 
+//Button use to pull all input
 form.addEventListener('submit', function(event)
 {   //Function to find years and push on array
     var nstart = parseFloat(yearStart.value);
