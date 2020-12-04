@@ -20,9 +20,9 @@ form.addEventListener('submit', function(event)
     //Function to find years and push on array
     var nstart = parseFloat(yearStart.value);
     var nend = parseFloat(yearEnd.value);
-     
+    
     var years = [];
-
+    /*
     if(nstart < 1927 || !nstart)
     {
         nstart = 1927;
@@ -36,17 +36,18 @@ form.addEventListener('submit', function(event)
     {
         years.push(i);
     }
-    
+    */
+
     //User input whether they won or not
     var wlose;
 
     if(bx.value == "Win")
     {
-        wlose = true;
+        wlose = 1;
     }
     else if(bx.value == "Lose")
     {
-        wlose = false;
+        wlose = 0;
     }
     
     //Initiate category array and user input on array
@@ -78,9 +79,9 @@ async function getData()
 {
     //make functions to separate the years and categories into single lines.
 
-    
 
-    var api_URL = 'localhost:3000/search/?';
+
+    var api_URL = "localhost:3000/search/?";
     
     const response = await fetch(api_URL);
     const data = await response.json();
