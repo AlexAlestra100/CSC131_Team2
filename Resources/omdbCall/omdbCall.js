@@ -27,3 +27,4 @@ async function apiRequest(searchResults){
     return searchResults;
 
 }
+
