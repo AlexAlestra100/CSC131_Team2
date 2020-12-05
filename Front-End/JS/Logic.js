@@ -14,9 +14,10 @@ var movie =
     winlose: null
 };
 
+//building link for entity
 function get_entity()
 {
-    if(movie.entity && movie.categ && movie.dates && movie.winlose)
+    if(movie.entity && movie.categ || movie.entity && movie.dates || movie.entity && movie.winlose)
     {
         return "e[]=" + movie.entity + "&";
     }
@@ -30,9 +31,10 @@ function get_entity()
     }
 }
 
+//building link for win or lose
 function get_wol()
 {
-    if(movie.winlose && movie.categ && movie.entity && movie.dates)
+    if(movie.winlose && movie.categ || movie.winlose && movie.dates)
     {
         return "w=" + movie.winlose + "&";
     }
@@ -46,13 +48,18 @@ function get_wol()
     }
 }
 
+//building link for dates
 function get_dates()
 {
-    if(movie.dates && movie.dates.length == 2 && movie.categ && movie.entity && movie.winlose)
+    if(movie.dates && movie.dates.length == 2 && movie.categ)
     {
         return "yr[]=" + movie.dates[0] + "&" + "yr[]=" + movie.dates[1] + "&";
     }
-    else if(movie.dates && movie.categ && movie.entity && movie.winlose)
+    if(movie.dates && movie.dates.length == 2)
+    {
+        return "yr[]=" + movie.dates[0] + "&" + "yr[]=" + movie.dates[1];
+    }
+    else if(movie.dates && movie.categ)
     {
         return "yr[]=" + movie.dates + "&";
     }
@@ -66,20 +73,46 @@ function get_dates()
     }
 }
 
+//building link for categories
+//!need to fix prints out undefined at the end!
+function get_categories()
+{
+    var x = "";
+
+    if(movie.categ)
+    {
+        for(var i = 0; i <= movie.categ.length; i++)
+        {
+            if(i == movie.categ.length)
+            {
+                return x + "gc[]=" + movie.categ[movie.categ.length];
+            }
+            else
+            {
+                x = x + "gc[]=" + movie.categ[i] + "&";
+            }
+        }
+    }
+    else
+    {
+        return "";
+    }
+}
+
+//api sends user input
 async function getData()
 {
-    //make functions to separate the years and categories into single lines.
-
     const d_entity = get_entity();
     const d_w = get_wol();
     const d_dates = get_dates(); 
+    const d_cat = get_categories();
      
     console.log(d_entity);
     console.log(d_w);
     console.log(d_dates);
-    //console.log(d_);
+    console.log(d_cat);
     
-    var api_URL = "localhost:3000/search/?" + d_entity + d_w + d_dates;
+    var api_URL = "localhost:3000/search/?" + d_entity + d_w + d_dates + d_cat;
     console.log(api_URL);
     /*
     const response = await fetch(api_URL);
