@@ -23,3 +23,22 @@ List of queries must start with "?" and each must be separated by "&"
 API ID Query Example
 
 localhost:3000/?ID={Whatever ID#}
+
+To link search button to result page
+onclick="location.href='Result.html'"
+
+filter through years
+
+    if(nstart < 1927 || !nstart)
+    {
+        nstart = 1927;
+    }
+    else if(nend > 2017 || !nend)
+    {
+        nend = 2017;
+    }
+
+    for(var i = nstart; i <= nend; i++)
+    {
+        years.push(i);
+    }

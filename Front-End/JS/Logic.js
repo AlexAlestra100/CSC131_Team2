@@ -14,6 +14,84 @@ var movie =
     winlose: null
 };
 
+function get_entity()
+{
+    if(movie.entity && movie.categ && movie.dates && movie.winlose)
+    {
+        return "e[]=" + movie.entity + "&";
+    }
+    else if(movie.entity)
+    {
+        return "e[]=" + movie.entity;
+    }
+    else
+    {
+        return "";
+    }
+}
+
+function get_wol()
+{
+    if(movie.winlose && movie.categ && movie.entity && movie.dates)
+    {
+        return "w=" + movie.winlose + "&";
+    }
+    else if(movie.winlose)
+    {
+        return "w=" + movie.winlose;
+    }
+    else
+    {
+        return "";
+    }
+}
+
+function get_dates()
+{
+    if(movie.dates && movie.dates.length == 2 && movie.categ && movie.entity && movie.winlose)
+    {
+        return "yr[]=" + movie.dates[0] + "&" + "yr[]=" + movie.dates[1] + "&";
+    }
+    else if(movie.dates && movie.categ && movie.entity && movie.winlose)
+    {
+        return "yr[]=" + movie.dates + "&";
+    }
+    else if(movie.dates)
+    {
+        return "yr[]=" + movie.dates;
+    }
+    else
+    {
+        return "";
+    }
+}
+
+async function getData()
+{
+    //make functions to separate the years and categories into single lines.
+
+    const d_entity = get_entity();
+    const d_w = get_wol();
+    const d_dates = get_dates(); 
+     
+    console.log(d_entity);
+    console.log(d_w);
+    console.log(d_dates);
+    //console.log(d_);
+    
+    var api_URL = "localhost:3000/search/?" + d_entity + d_w + d_dates;
+    console.log(api_URL);
+    /*
+    const response = await fetch(api_URL);
+    const data = await response.json();
+
+    /*
+    const {latitude, longitude} = data;
+    document.getElementById('lat').textContent = latitude;
+    document.getElementById('lon').textContent = longitude;
+    */
+}
+
 //Button use to pull all input
 form.addEventListener('submit', function(event)
 {   
@@ -22,21 +100,23 @@ form.addEventListener('submit', function(event)
     var nend = parseFloat(yearEnd.value);
     
     var years = [];
-    /*
-    if(nstart < 1927 || !nstart)
-    {
-        nstart = 1927;
-    }
-    else if(nend > 2017 || !nend)
-    {
-        nend = 2017;
-    }
 
-    for(var i = nstart; i <= nend; i++)
+    if(nstart && nend)
     {
-        years.push(i);
+        years = [nstart, nend];
     }
-    */
+    else if(nstart)
+    {
+        years = [nstart];
+    }
+    else if(nend)
+    {
+        years = [nend];
+    }
+    else
+    {
+        years = null;
+    }
 
     //User input whether they won or not
     var wlose;
@@ -49,6 +129,10 @@ form.addEventListener('submit', function(event)
     {
         wlose = 0;
     }
+    else
+    {
+        wlose = null;
+    }
     
     //Initiate category array and user input on array
     var selected = [];
@@ -60,12 +144,17 @@ form.addEventListener('submit', function(event)
         }
     }
     
+    if(selected === undefined || selected.length == 0)
+    {
+        selected = null;
+    }
     //Object asignment
     movie.entity = mname.value;
     movie.categ = selected;
     movie.dates = years;
     movie.winlose = wlose;
 
+    getData();
     /*
     console.log(movie.entity);
     console.log(movie.categ);
@@ -74,23 +163,3 @@ form.addEventListener('submit', function(event)
     */
     event.preventDefault();
 });
-
-async function getData()
-{
-    //make functions to separate the years and categories into single lines.
-
-
-
-    var api_URL = "localhost:3000/search/?";
-    
-    const response = await fetch(api_URL);
-    const data = await response.json();
-
-    /*
-    const {latitude, longitude} = data;
-    document.getElementById('lat').textContent = latitude;
-    document.getElementById('lon').textContent = longitude;
-    */
-}
-
-//getData();
