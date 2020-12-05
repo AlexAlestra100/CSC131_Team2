@@ -74,23 +74,16 @@ function get_dates()
 }
 
 //building link for categories
-//!need to fix prints out undefined at the end!
+//need return value
 function get_categories()
 {
     var x = "";
-
+    console.log(movie.categ);
     if(movie.categ)
     {
         for(var i = 0; i <= movie.categ.length; i++)
         {
-            if(i == movie.categ.length)
-            {
-                return x + "gc[]=" + movie.categ[movie.categ.length];
-            }
-            else
-            {
-                x = x + "gc[]=" + movie.categ[i] + "&";
-            }
+                x = x + "gc[]=" + movie.categ[i];
         }
     }
     else
