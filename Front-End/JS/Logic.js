@@ -11,12 +11,15 @@ var movie =
     entity: null,
     categ: null,
     dates: null,
-    winlose: null
+    winlose: null,
+
 };
 
 //building link for entity
 function get_entity()
 {
+    movie.entity = movie.entity.replaceAll(" ", "+");
+
     if(movie.entity && movie.categ || movie.entity && movie.dates || movie.entity && movie.winlose)
     {
         return "e[]=" + movie.entity + "&";
@@ -83,13 +86,20 @@ function get_categories()
     {
         for(var i = 0; i <= movie.categ.length; i++)
         {
+
             if(i != movie.categ.length - 1)
             {
-                x = x + "gc[]=" + movie.categ[i] + "&";
+                var n = movie.categ[i];
+                n = n.replaceAll(" ", "+");
+
+                x = x + "gc[]=" + n + "&";
             }
             else
             {
-                return x + "gc[]=" + movie.categ[i];
+                var n = movie.categ[i];
+                n = n.replaceAll(" ", "+");
+
+                return x + "gc[]=" + n;
             }
         }
     }
