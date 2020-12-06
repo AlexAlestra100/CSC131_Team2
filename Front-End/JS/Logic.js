@@ -83,7 +83,14 @@ function get_categories()
     {
         for(var i = 0; i <= movie.categ.length; i++)
         {
-                x = x + "gc[]=" + movie.categ[i];
+            if(i != movie.categ.length - 1)
+            {
+                x = x + "gc[]=" + movie.categ[i] + "&";
+            }
+            else
+            {
+                return x + "gc[]=" + movie.categ[i];
+            }
         }
     }
     else
