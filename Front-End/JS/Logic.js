@@ -1,4 +1,5 @@
 //Pull user input
+var sing = document.getElementById('single');
 var form = document.getElementById('acc');
 var yearStart = document.getElementById('m_start');
 var yearEnd = document.getElementById('m_end');
@@ -77,11 +78,9 @@ function get_dates()
 }
 
 //building link for categories
-//need return value
 function get_categories()
 {
     var x = "";
-    console.log(movie.categ);
     if(movie.categ)
     {
         for(var i = 0; i <= movie.categ.length; i++)
@@ -116,22 +115,35 @@ async function getData()
     const d_w = get_wol();
     const d_dates = get_dates(); 
     const d_cat = get_categories();
-     
+    
+    /*
     console.log(d_entity);
     console.log(d_w);
     console.log(d_dates);
     console.log(d_cat);
-    
+    */
+
     var api_URL = "localhost:3000/search/?" + d_entity + d_w + d_dates + d_cat;
-    console.log(api_URL);
-    /*
-    const response = await fetch(api_URL);
+    //console.log(api_URL);
+    
+    var uRl = "Data/Test.json";
+    const response = await fetch(uRl);
     const data = await response.json();
 
+    var {category} = data;
+    document.getElementById('res').textContent = category;
     /*
-    const {latitude, longitude} = data;
-    document.getElementById('lat').textContent = latitude;
-    document.getElementById('lon').textContent = longitude;
+    const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
+    document.getElementById('').textContent = category;
+    document.getElementById('').textContent = entity;
+    document.getElementById('').textContent = winner;
+    document.getElementById('').textContent = year;
+    document.getElementById('').textContent = general_cat;
+    document.getElementById('').textContent = tid;
+    document.getElementById('').textContent = poster;
+    document.getElementById('').textContent = imbdLink;
+    document.getElementById('').textContent = movie;
+    document.getElementById('').textContent = ID;
     */
 }
 
