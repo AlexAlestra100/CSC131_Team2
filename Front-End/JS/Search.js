@@ -107,6 +107,17 @@ function get_categories()
     }
 }
 
+async function getSingle(i_d)
+{
+    var api_URL = "http://localhost:3000/?ID=" + i_d;
+    console.log(api_URL);
+    
+    const response = await fetch(api_URL);
+    const data_s = await response.json();
+
+    console.log(data_s);
+}
+
 //api sends user input
 async function getData()
 {
@@ -128,7 +139,13 @@ async function getData()
     //var uRl = "Data/Test.json";
     const response = await fetch(api_URL);
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
+
+    var {ID} = data[0];
+
+    console.log(ID);
+
+    getSingle(ID);
     
     /*
     const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
@@ -208,11 +225,6 @@ form.addEventListener('submit', function(event)
     movie.winlose = wlose;
 
     getData();
-    /*
-    console.log(movie.entity);
-    console.log(movie.categ);
-    console.log(movie.dates);
-    console.log(movie.winlose);
-    */
+
     event.preventDefault();
 });

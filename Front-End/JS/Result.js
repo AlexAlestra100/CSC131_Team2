@@ -1,12 +1,12 @@
 
 
-async function getData()
+async function getSingle(i_d)
 {
-    var api_URL = "localhost:3000/?ID=" + i_d;
+    var api_URL = "http://localhost:3000/?ID=" + i_d;
     console.log(api_URL);
     
-    //var uRl = "Data/Test.json";
     const response = await fetch(api_URL);
-    const data = await response.json();
-    console.log(data);
+    const data_s = await response.json();
+
+    return data_s;
 }
