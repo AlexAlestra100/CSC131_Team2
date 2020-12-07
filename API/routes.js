@@ -28,8 +28,11 @@ var appRouter = function(app){
         queryOBJ.entity             = req.query.e;
 
         queryOBJ = validate(queryOBJ);
-        
-        res.status(200).send(queryOBJ);
+
+        if(queryOBJ)       
+            res.status(200).send(search(queryOBJ));
+
+        else res.status(400).send('Invalid Request');
     });
 }
 

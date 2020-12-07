@@ -1,12 +1,16 @@
 function validate(queryOBJ) { //Checks if queryOBJ contains arrays within obj
-    queryOBJ.year       = yearValidate(queryOBJ.year); 
-    queryOBJ.winner     = winnerValidate(queryOBJ.winner);
-    //use checkArr function down below for other parameters
-    return queryOBJ;
+    if(queryOBJ.year)           queryOBJ.year           = yearValidate(queryOBJ.year); 
+    if(queryOBJ.winner)         queryOBJ.winner         = winnerValidate(queryOBJ.winner);
+    if(queryOBJ.category)       queryOBJ.category       = checkArr(queryOBJ.category);
+    if(queryOBJ.general_cat)    queryOBJ.general_cat    = checkArr(queryOBJ.general_cat);
+    if(queryOBJ.entity)         queryOBJ.entity         = checkArr(queryOBJ.entity);
+
+    if(Object.values(queryOBJ).includes(undefined)) return null;
+    
+    else return queryOBJ;
 }
 
 function yearValidate(yearKey) {
-    // var i is set to one to skip first obj in queryOBJ (winner)
     if(!Array.isArray(yearKey)) return null;
 
     let yrArrLen = yearKey.length;
@@ -29,26 +33,18 @@ function yearValidate(yearKey) {
 }
 
 function winnerValidate(winnerKey){
-    winnerKey = 1 + parseInt(winnerKey);
-    
+    winnerKey = 1 + parseInt(winnerKey);    
    
-    if (winnerKey < 1 || winnerKey > 2){
-        return null;
-    }
-    else {
-        return winnerKey; //this is now an int
-    }
+    if (winnerKey < 1 || winnerKey > 2) return null;
+    
+    else return winnerKey; //this is now an int
+    
 }
 
 function checkArr(key){
-    if(Array.isArray(key))
-    {
-        return key;
-    }
-     else {
-         return null;
-     }
-
+    if(Array.isArray(key)) return key;
+    
+    else return null;
 }
 
 module.exports = validate;
