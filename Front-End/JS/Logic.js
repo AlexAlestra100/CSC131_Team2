@@ -130,10 +130,7 @@ async function getData()
     const response = await fetch(uRl);
     const data = await response.json();
     console.log(data);
-
-    var {category} = data;
-    console.log(category);
-    document.getElementById('res').textContent = category;
+    
     /*
     const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
     document.getElementById('').textContent = category;
