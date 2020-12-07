@@ -13,7 +13,6 @@ var movie =
     categ: null,
     dates: null,
     winlose: null,
-
 };
 
 //building link for entity
@@ -124,8 +123,8 @@ async function getData()
     */
 
     var api_URL = "localhost:3000/search/?" + d_entity + d_w + d_dates + d_cat;
-    //console.log(api_URL);
-    
+    console.log(api_URL);
+    /*
     var uRl = "Data/Test.json";
     const response = await fetch(uRl);
     const data = await response.json();
