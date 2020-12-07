@@ -2,7 +2,7 @@ function combinedSearch(inputJSON) {
     let result = require("./oscarsData.json");
 
     
-    if( inputJSON.hasOwnProperty('ID'))                           result = result[inputJSON.ID];
+    if( inputJSON.hasOwnProperty('ID'))                         result = result[inputJSON.ID];
     if( parseWinnerKeyData(inputJSON))                          result = search(result, "winner", inputJSON.winner);
     if( inputJSON.general_cat)                                  result = rangeSearch(result, "general_cat", inputJSON.general_cat);
     if( inputJSON.category)                                     result = rangeSearch(result, "category", inputJSON.category);
