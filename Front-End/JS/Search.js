@@ -115,18 +115,18 @@ async function getData()
     const d_dates = get_dates(); 
     const d_cat = get_categories();
     
-    /*
+    
     console.log(d_entity);
     console.log(d_w);
     console.log(d_dates);
     console.log(d_cat);
-    */
+    
 
-    var api_URL = "localhost:3000/search/?" + d_entity + d_w + d_dates + d_cat;
+    var api_URL = "http://localhost:3000/search/?" + d_entity + d_w + d_dates + d_cat;
     console.log(api_URL);
-    /*
-    var uRl = "Data/Test.json";
-    const response = await fetch(uRl);
+    
+    //var uRl = "Data/Test.json";
+    const response = await fetch(api_URL);
     const data = await response.json();
     console.log(data);
     
