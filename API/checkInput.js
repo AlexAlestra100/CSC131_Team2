@@ -1,5 +1,6 @@
 function validate(queryOBJ) { //Checks if queryOBJ contains arrays within obj
-    queryOBJ.year = yearValidate(queryOBJ.year); 
+    queryOBJ.year       = yearValidate(queryOBJ.year); 
+    queryOBJ.winner     = winnerValidate(queryOBJ.winner);
     
     return queryOBJ;
 }
@@ -12,21 +13,31 @@ function yearValidate(yearKey) {
 
     if(yrArrLen > 2) return null;
     
-    yearKey = Array.from(yearKey, element => parseInt)
+    yearKey = Array.from(yearKey, element => parseInt(element));
 
-    console.log(yearKey);
+    const endYr = yearKey[yrArrLen - 1];
+
+    yrArrLen = Math.abs(endYr - yearKey[0]);
+
+    yrArr = [];
+
+    for(let i = 0; i < yrArrLen; i++) yrArr.push(yearKey[0] + i);
+
+    yrArr.push(endYr);
+
+    return yrArr;
 }
 
 function winnerValidate(winnerKey){
-    winnerKey =1+ parseInt(winnerKey);
+    winnerKey = 1 + parseInt(winnerKey);
     
    
-    if (winnerKey <1 || winnerKey>2){
+    if (winnerKey < 1 || winnerKey > 2){
         return null;
     }
     else {
         return winnerKey; //this is now an int
     }
 }
+
 module.exports = validate;
-//1 + parseInt(req.query.w);
