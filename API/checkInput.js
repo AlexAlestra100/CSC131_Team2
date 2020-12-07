@@ -1,7 +1,7 @@
 function validate(queryOBJ) { //Checks if queryOBJ contains arrays within obj
     queryOBJ.year       = yearValidate(queryOBJ.year); 
     queryOBJ.winner     = winnerValidate(queryOBJ.winner);
-    
+    //use checkArr function down below for other parameters
     return queryOBJ;
 }
 
@@ -38,6 +38,17 @@ function winnerValidate(winnerKey){
     else {
         return winnerKey; //this is now an int
     }
+}
+
+function checkArr(key){
+    if(Array.isArray(key))
+    {
+        return key;
+    }
+     else {
+         return null;
+     }
+
 }
 
 module.exports = validate;
