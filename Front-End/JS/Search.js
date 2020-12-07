@@ -116,8 +116,6 @@ async function getSingle(i_d)
     const data_s = await response.json();
 
     console.log(data_s);
-
-    return data_s;
 }
 
 //api sends user input
@@ -141,13 +139,13 @@ async function getData()
     //var uRl = "Data/Test.json";
     const response = await fetch(api_URL);
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
 
     var {ID} = data[0];
 
     console.log(ID);
 
-    getSingle(ID).then(data_s=>console.log(data_s));
+    getSingle(ID);
     
     /*
     const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
