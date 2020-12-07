@@ -129,6 +129,11 @@ async function getData()
     const response = await fetch(api_URL);
     const data = await response.json();
     console.log(data);
+
+    var {category, tid} = data[0];
+
+    console.log(tid);
+    console.log(category);
     
     /*
     const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
@@ -208,11 +213,6 @@ form.addEventListener('submit', function(event)
     movie.winlose = wlose;
 
     getData();
-    /*
-    console.log(movie.entity);
-    console.log(movie.categ);
-    console.log(movie.dates);
-    console.log(movie.winlose);
-    */
+
     event.preventDefault();
 });
