@@ -10,9 +10,7 @@ var appRouter = function(app){
             let ID = req.query.ID;
 
             ID = {'ID' : parseInt(ID)};
-
-            console.log(ID);
-
+            
             res.status(200).send(search(ID));
         }
 
