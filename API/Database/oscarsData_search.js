@@ -1,8 +1,8 @@
-function combinedSearch(inputJSON) {
+async function combinedSearch(inputJSON) {
     let result = require("./oscarsData.json");
 
     
-    if( inputJSON.hasOwnProperty('ID'))                         result = result[inputJSON.ID];
+    if( inputJSON.hasOwnProperty('ID'))                         result = await singleton(result, inputJSON.ID);
     if( parseWinnerKeyData(inputJSON))                          result = search(result, "winner", inputJSON.winner);
     if( inputJSON.general_cat)                                  result = rangeSearch(result, "general_cat", inputJSON.general_cat);
     if( inputJSON.category)                                     result = rangeSearch(result, "category", inputJSON.category);
@@ -30,6 +30,14 @@ function rangeSearch(oscarsData, searchKey, query){
     });
 
     return result;
+}
+
+async function singleton(oscarsData, ID){
+    let externAPI = require('./externalApiCall.js');
+
+    let singleRet = oscarsData[ID];
+
+    return await externAPI(singleRet);
 }
 
 //Winner key in input JSON is base 3 value

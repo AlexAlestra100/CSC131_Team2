@@ -47,6 +47,7 @@ async function singleton(singleSearch){
 async function singletonDeliver(someObject){
     let data = await singleton(someObject);
 
-    module.exports = singletonDeliver;
     return data;
 }
+
+module.exports = singletonDeliver;
