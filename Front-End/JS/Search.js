@@ -107,6 +107,17 @@ function get_categories()
     }
 }
 
+async function getSingle(i_d)
+{
+    var api_URL = "http://localhost:3000/?ID=" + i_d;
+    console.log(api_URL);
+    
+    const response = await fetch(api_URL);
+    const data_s = await response.json();
+
+    console.log(data_s);
+}
+
 //api sends user input
 async function getData()
 {
@@ -128,12 +139,13 @@ async function getData()
     //var uRl = "Data/Test.json";
     const response = await fetch(api_URL);
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
 
-    var {category, tid} = data[0];
+    var {ID} = data[0];
 
-    console.log(tid);
-    console.log(category);
+    console.log(ID);
+
+    getSingle(ID);
     
     /*
     const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
