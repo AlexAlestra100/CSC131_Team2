@@ -1,6 +1,6 @@
 function validate(queryOBJ) { //Checks if queryOBJ contains arrays within obj
     queryOBJ.year = yearValidate(queryOBJ.year); 
-
+    
     return queryOBJ;
 }
 
@@ -15,6 +15,18 @@ function yearValidate(yearKey) {
     yearKey = Array.from(yearKey, element => parseInt)
 
     console.log(yearKey);
+}
+
+function winnerValidate(winnerKey){
+    winnerKey =1+ parseInt(winnerKey);
+    
+   
+    if (winnerKey <1 || winnerKey>2){
+        return null;
+    }
+    else {
+        return winnerKey; //this is now an int
+    }
 }
 module.exports = validate;
 //1 + parseInt(req.query.w);
