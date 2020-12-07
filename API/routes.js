@@ -22,16 +22,15 @@ var appRouter = function(app){
       
         let queryOBJ = {};
 
-        queryOBJ.winner             = req.query.w;
-        queryOBJ.year               = req.query.yr;     
-        queryOBJ.general_cat        = req.query.gc;
-        queryOBJ.category           = req.query.c;
-        queryOBJ.entity             = req.query.e;
+        if(req.query.w)             queryOBJ.winner         = req.query.w;
+        if(req.query.yr)            queryOBJ.year           = req.query.yr;     
+        if(req.query.gc)            queryOBJ.general_cat    = req.query.gc;
+        if(req.query.c)             queryOBJ.category       = req.query.c;
+        if(req.query.e)             queryOBJ.entity         = req.query.e;
 
         queryOBJ = validate(queryOBJ);
 
-        if(queryOBJ)       
-            res.status(200).send(search(queryOBJ));
+        if(queryOBJ) res.status(200).send(search(queryOBJ));
 
         else res.status(400).send('Invalid Request');
     });

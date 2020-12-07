@@ -5,6 +5,8 @@ function validate(queryOBJ) { //Checks if queryOBJ contains arrays within obj
     if(queryOBJ.general_cat)    queryOBJ.general_cat    = checkArr(queryOBJ.general_cat);
     if(queryOBJ.entity)         queryOBJ.entity         = checkArr(queryOBJ.entity);
 
+    console.log(queryOBJ);
+
     if(Object.values(queryOBJ).includes(undefined)) return null;
     
     else return queryOBJ;
