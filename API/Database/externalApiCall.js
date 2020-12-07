@@ -14,7 +14,7 @@ async function singleton(singleSearch){
         .then(res => res.json())
         .then(json => {
 
-            singleSearch.popularity = json.popularity;
+            singleSearch.ratings = json.popularity;
             singleSearch.plot = json.overview;
             singleSearch.time = json.runtime;
         })
