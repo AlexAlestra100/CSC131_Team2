@@ -11,6 +11,8 @@ var appRouter = function(app){
 
             ID = {'ID' : parseInt(ID)};
 
+            console.log(ID);
+
             res.status(200).send(search(ID));
         }
 
