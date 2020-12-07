@@ -1,7 +1,6 @@
 //here we call installed modules and assigning them to vars
 //express and bodyParser respesctively
 var express         = require("express");
-var cors            = require("cors");
 var bodyParser      = require("body-parser");
 
 //these two lines tells express to accept both JSON and URL

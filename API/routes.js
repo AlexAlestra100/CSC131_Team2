@@ -1,5 +1,6 @@
 //Anytime there is a GET request to the root app
 //It will print out the test code
+var cors            = require("cors");
 let validate    = require("./checkInput.js");
 let search      = require("./database/oscarsData_search.js");
 
