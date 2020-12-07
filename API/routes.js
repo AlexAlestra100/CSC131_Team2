@@ -4,7 +4,7 @@ let validate    = require("./checkInput.js");
 let search      = require("./database/oscarsData_search.js");
 
 var appRouter = function(app){
-    app.get("/",function(req,res){
+    app.get("/", cors(), function(req,res){
         if(req.query.ID){ 
             let ID = req.query.ID;
 
@@ -14,10 +14,10 @@ var appRouter = function(app){
         }
 
         else
-            res.status(404);
+            res.status(404).send('ID Not Found');
     });
     
-    app.get('/search/',function(req,res){
+    app.get('/search/', cors(),function(req,res){
       
         let queryOBJ = {};
 
