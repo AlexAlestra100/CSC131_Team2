@@ -1,5 +1,5 @@
 let cors            = require("cors");
-let validate        = require("./checkInput.js");
+let validate        = require("./validateQuery.js");
 let search          = require("./database/oscarsData_search.js");
 
 
