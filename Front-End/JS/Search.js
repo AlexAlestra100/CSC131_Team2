@@ -1,11 +1,14 @@
 //Pull user input
+var f_sing = document.getElementById('')
+var in_sing = document.getElementById('x_sing');
+var sing_link = document.getElementById('single_res')
 var sing = document.getElementById('single');
 var form = document.getElementById('acc');
 var yearStart = document.getElementById('m_start');
 var yearEnd = document.getElementById('m_end');
 var mname = document.getElementById("m_name");
 var bx = document.getElementById("wol");
-var res = document.getElementById("result");
+var res = document.getElementById("res");
 
 //Object decleration
 var movie =
@@ -116,13 +119,7 @@ async function getSingle(i_d)
     const response = await fetch(api_URL);
     const data_s = await response.json();
 
-    //Display 
-    var obj = data_s;
-    for (var key in obj)
-    {
-      var value = obj[key];
-      document.write("<br> - " + key + ": " + value);
-    };
+    sing_link.setAttribute("href", api_URL);
 }
 
 //api sends user input
@@ -133,36 +130,12 @@ async function getData()
     const d_dates = get_dates(); 
     const d_cat = get_categories();
     
-    
-    console.log(d_entity);
-    console.log(d_w);
-    console.log(d_dates);
-    console.log(d_cat);
-    
-
     var api_URL = "http://localhost:3000/search/?" + d_entity + d_w + d_dates + d_cat;
-    console.log(api_URL);
     
-    //var uRl = "Data/Test.json";
     const response = await fetch(api_URL);
     const data = await response.json();
-    console.log(data);
 
-    res.innerText = "Results: " + api_URL;
-
-    /*
-    for (var i = 0; i < data.length; i++)
-    {
-        document.write("<br><br> Result: " + i);
-        var obj = data[i];
-        for (var key in obj)
-        {
-          var value = obj[key];
-          document.write("<br> - " + key + ": " + value);
-        }
-      }
-    */
-    //getSingle(ID);
+    res.setAttribute("href", api_URL);
 }
 
 //Button use to pull all input
@@ -228,6 +201,16 @@ form.addEventListener('submit', function(event)
     movie.winlose = wlose;
 
     getData();
+
+    event.preventDefault();
+});
+
+//For singleton results
+single.addEventListener('submit', function(event)
+{   
+    sing_id = in_sing.value;
+    
+    getSingle(sing_id);
 
     event.preventDefault();
 });
