@@ -5,6 +5,7 @@ var yearStart = document.getElementById('m_start');
 var yearEnd = document.getElementById('m_end');
 var mname = document.getElementById("m_name");
 var bx = document.getElementById("wol");
+var res = document.getElementById("result");
 
 //Object decleration
 var movie =
@@ -115,7 +116,13 @@ async function getSingle(i_d)
     const response = await fetch(api_URL);
     const data_s = await response.json();
 
-    console.log(data_s);
+    //Display 
+    var obj = data_s;
+    for (var key in obj)
+    {
+      var value = obj[key];
+      document.write("<br> - " + key + ": " + value);
+    };
 }
 
 //api sends user input
@@ -141,25 +148,21 @@ async function getData()
     const data = await response.json();
     console.log(data);
 
-    var {ID} = data[0];
+    res.innerText = "Results: " + api_URL;
 
-    //console.log(ID);
-
-    //getSingle(ID);
-    
     /*
-    const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
-    document.getElementById('').textContent = category;
-    document.getElementById('').textContent = entity;
-    document.getElementById('').textContent = winner;
-    document.getElementById('').textContent = year;
-    document.getElementById('').textContent = general_cat;
-    document.getElementById('').textContent = tid;
-    document.getElementById('').textContent = poster;
-    document.getElementById('').textContent = imbdLink;
-    document.getElementById('').textContent = movie;
-    document.getElementById('').textContent = ID;
+    for (var i = 0; i < data.length; i++)
+    {
+        document.write("<br><br> Result: " + i);
+        var obj = data[i];
+        for (var key in obj)
+        {
+          var value = obj[key];
+          document.write("<br> - " + key + ": " + value);
+        }
+      }
     */
+    //getSingle(ID);
 }
 
 //Button use to pull all input
