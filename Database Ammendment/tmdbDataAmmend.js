@@ -152,9 +152,9 @@ async function personSearch(database){
     
     return database;
 }
+
 //used to grab the data from the data retrieval and ammendment functions in order to log it to the console
-//uh oh someone used a bad word
-async function testThisShit(){
+async function run(){
     let data = await dRetrieval();
 
     let ammend = await tDataAmmend(data);
@@ -162,4 +162,4 @@ async function testThisShit(){
     return ammend;
 } 
 //stringifies and logs the json for easy copy and paste into another json file
-testThisShit().then(data => console.log(JSON.stringify(data)));
+run().then(data => console.log(JSON.stringify(data)));
