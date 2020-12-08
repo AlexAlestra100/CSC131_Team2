@@ -9,7 +9,7 @@ function validate(queryOBJ) {
     if(queryOBJ.hasOwnProperty('general_cat'))      queryOBJ.general_cat    = checkArr(queryOBJ.general_cat);
     if(queryOBJ.hasOwnProperty('entity'))           queryOBJ.entity         = checkArr(queryOBJ.entity);
 
-    if(Object.values(queryOBJ).includes(undefined)) return null;
+    if(Object.values(queryOBJ).includes(null)) return {};
     
     else return queryOBJ;
 }
