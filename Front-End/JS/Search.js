@@ -139,13 +139,13 @@ async function getData()
     //var uRl = "Data/Test.json";
     const response = await fetch(api_URL);
     const data = await response.json();
-    //console.log(data);
+    console.log(data);
 
     var {ID} = data[0];
 
-    console.log(ID);
+    //console.log(ID);
 
-    getSingle(ID);
+    //getSingle(ID);
     
     /*
     const {category, entity, winner, year, general_cat, tid, poster, imdbLink, movie, ID} = data;
