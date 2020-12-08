@@ -1,37 +1,50 @@
-//Anytime there is a GET request to the root app
-//It will print out the test code
-var cors            = require("cors");
+let cors            = require("cors");
 let validate        = require("./checkInput.js");
 let search          = require("./database/oscarsData_search.js");
 
-var appRouter = function(app){
+
+//API Endpoints
+let appRouter = function(app){
+    
+    //Singleton response endpoint
     app.get("/", cors(), async function(req,res){
-        if(req.query.ID){ 
+        if(req.query.hasOwnProperty('ID')){ 
             let ID = req.query.ID;
 
             ID = {'ID' : parseInt(ID)};
 
-            res.status(200).send(await search(ID));
+            let result = await search(ID);
+
+            //Response for valid ID
+            if(result) res.status(200).send(result);
+
+            //Response for invalid ID
+            else res.status(400).send('Invalid Request');
         }
 
-        else
-            res.status(404).send('ID Not Found');
+        //Response for empty request
+        else res.status(400).send('Empty Request');
     });
     
+    //Muli-object response endpoint
     app.get('/search/', cors(), async function(req,res){
-      
+    
+        //Place query into corresponding database keys
         let queryOBJ = {};
 
-        if(req.query.w)     queryOBJ.winner         = req.query.w;
-        if(req.query.yr)    queryOBJ.year           = req.query.yr;     
-        if(req.query.gc)    queryOBJ.general_cat    = req.query.gc;
-        if(req.query.c)     queryOBJ.category       = req.query.c;
-        if(req.query.e)     queryOBJ.entity         = req.query.e;
+        if(req.query.hasOwnProperty('w'))       queryOBJ.winner         = req.query.w;
+        if(req.query.hasOwnProperty('yr'))      queryOBJ.year           = req.query.yr;     
+        if(req.query.hasOwnProperty('gc'))      queryOBJ.general_cat    = req.query.gc;
+        if(req.query.hasOwnProperty('c'))       queryOBJ.category       = req.query.c;
+        if(req.query.hasOwnProperty('e'))       queryOBJ.entity         = req.query.e;
 
+        //Validate query and format values for database search
         queryOBJ = validate(queryOBJ);
 
-        if(queryOBJ) res.status(200).send(await search(queryOBJ));
+        //Response for valid query
+        if(JSON.stringify(queryOBJ) !== '{}') res.status(200).send(await search(queryOBJ));
 
+        //Response for invalid query
         else res.status(400).send('Invalid Request');
     });
 }

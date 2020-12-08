@@ -1,9 +1,9 @@
-function validate(queryOBJ) { //Checks if queryOBJ contains arrays within obj
-    if(queryOBJ.year)           queryOBJ.year           = yearValidate(queryOBJ.year); 
-    if(queryOBJ.winner)         queryOBJ.winner         = winnerValidate(queryOBJ.winner);
-    if(queryOBJ.category)       queryOBJ.category       = checkArr(queryOBJ.category);
-    if(queryOBJ.general_cat)    queryOBJ.general_cat    = checkArr(queryOBJ.general_cat);
-    if(queryOBJ.entity)         queryOBJ.entity         = checkArr(queryOBJ.entity);
+function validate(queryOBJ) {
+    if(queryOBJ.hasOwnProperty('year'))             queryOBJ.year           = yearValidate(queryOBJ.year); 
+    if(queryOBJ.hasOwnProperty('winner'))           queryOBJ.winner         = winnerValidate(queryOBJ.winner);
+    if(queryOBJ.hasOwnProperty('category'))         queryOBJ.category       = checkArr(queryOBJ.category);
+    if(queryOBJ.hasOwnProperty('general_cat'))      queryOBJ.general_cat    = checkArr(queryOBJ.general_cat);
+    if(queryOBJ.hasOwnProperty('entity'))           queryOBJ.entity         = checkArr(queryOBJ.entity);
 
     if(Object.values(queryOBJ).includes(undefined)) return null;
     
@@ -33,12 +33,9 @@ function yearValidate(yearKey) {
 }
 
 function winnerValidate(winnerKey){
-    winnerKey = 1 + parseInt(winnerKey);    
-   
-    if (winnerKey < 1 || winnerKey > 2) return null;
-    
-    else return winnerKey; //this is now an int
-    
+    if (winnerKey < 0 || winnerKey > 1) return null;
+
+    return winnerKey == 1; 
 }
 
 function checkArr(key){
