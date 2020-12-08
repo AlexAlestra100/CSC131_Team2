@@ -41,8 +41,14 @@ let appRouter = function(app){
         //Validate query and format values for database search
         queryOBJ = validate(queryOBJ);
 
-        //Response for valid query
-        if(JSON.stringify(queryOBJ) !== '{}') res.status(200).send(await search(queryOBJ));
+        //Responses for valid query
+        if(JSON.stringify(queryOBJ) !== '{}') {
+            let result = await search(queryOBJ);
+
+            if(result.length) res.status(200).send(result);
+
+            else res.status(404).send('Result Not Found');
+        }
 
         //Response for invalid query
         else res.status(400).send('Invalid Request');
