@@ -1,12 +1,13 @@
 {
-  "name": "simpleapi",
+  "name": "little-bits-final",
   "version": "1.0.0",
   "description": "Retrive http from front end containging all search arguments.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Nader S. Opeyany team2",
+  "author": "Little Bits - Team 2",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
