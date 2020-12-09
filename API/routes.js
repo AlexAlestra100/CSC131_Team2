@@ -13,7 +13,7 @@ let appRouter = function(app){
             let result = await search(req.params);
 
             //Response for valid ID
-            if(result) res.status(200).send(result);
+            if(await result) res.status(200).send(result);
 
             //Response for invalid ID
             else res.status(400).send('Invalid Request');
