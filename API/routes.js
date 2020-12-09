@@ -3,17 +3,19 @@ let validate        = require("./validateQuery.js");
 let search          = require("./Database/oscarsData_search.js");
 
 
+
 //API Endpoints
 let appRouter = function(app){
     
+    
+    app.get("/doc", cors(), async function(req,res){
+        //res.render('./Documentation/API_Documentation.html');
+    });
+
     //Singleton response endpoint
-    app.get("/", cors(), async function(req,res){
-        if(req.query.hasOwnProperty('ID')){ 
-            let ID = req.query.ID;
-
-            ID = {'ID' : parseInt(ID)};
-
-            let result = await search(ID);
+    app.get("/ID/:ID", cors(), async function(req,res){
+        if(req.params.ID >= 0){ 
+            let result = await search(req.params);
 
             //Response for valid ID
             if(result) res.status(200).send(result);
@@ -21,9 +23,6 @@ let appRouter = function(app){
             //Response for invalid ID
             else res.status(400).send('Invalid Request');
         }
-
-        //Response for empty request
-        else res.status(400).send('Empty Request');
     });
     
     //Muli-object response endpoint

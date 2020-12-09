@@ -113,7 +113,7 @@ function get_categories()
 
 async function getSingle(i_d)
 {
-    var api_URL = "http://little-bits-final.herokuapp.com/?ID=" + i_d;
+    var api_URL = "http://little-bits-final.herokuapp.com/ID/" + i_d;
     console.log(api_URL);
     
     const response = await fetch(api_URL);
