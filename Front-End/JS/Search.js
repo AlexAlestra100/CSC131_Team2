@@ -113,7 +113,7 @@ function get_categories()
 
 async function getSingle(i_d)
 {
-    var api_URL = "http://localhost:3000/?ID=" + i_d;
+    var api_URL = "http://little-bits-final.herokuapp.com/?ID=" + i_d;
     console.log(api_URL);
     
     const response = await fetch(api_URL);
@@ -130,7 +130,7 @@ async function getData()
     const d_dates = get_dates(); 
     const d_cat = get_categories();
     
-    var api_URL = "http://localhost:3000/search/?" + d_entity + d_w + d_dates + d_cat;
+    var api_URL = "http://little-bits-final.herokuapp.com/search/?" + d_entity + d_w + d_dates + d_cat;
     
     const response = await fetch(api_URL);
     const data = await response.json();
