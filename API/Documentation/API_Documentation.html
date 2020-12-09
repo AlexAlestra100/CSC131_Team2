@@ -12,13 +12,17 @@
                 <b>Little Bits API</b> 
                 <small>- Documentation</small>
             </h1>
+            <p>
+                The Little Bits Oscars API allows users to obtain information about the films which were themselves or which had crew or castmembers nominated for Oscars Awards.<br>
+                This page lists instructions for the use of the API.
+            </p>
         </div>
         
         <div id="singleton">
             <h2>Find Nomination by ID</h2>
             <p>
                 An Oscars nomination can be located in our database through an ID lookup.<br>
-                This is accessed through the /ID/ endpoint. For example:<br>
+                This is accessed through a GET request to the /ID/ endpoint. URL example:<br>
                 <strong>https://little-bits-final.herokuapp.com/ID/[example-id]</strong><br>
                 A valid nomination ID will be an integer with a value between 0 and 8910.<br>
                 A nomination's ID value can be found using a /search/ query. This information 
@@ -54,7 +58,7 @@
         <div id="multiple">
             <h2>Database Search</h2>
             <p>
-                The database can be searched through a query at the /search/ endpoint. For example:<br>
+                The database can be searched through a GET request at the /search/ endpoint. URL example:<br>
                 <strong>https://little-bits-final.herokuapp.com/search/?[example-query]</strong><br>
                 Valid queries and their formats:<br>
             </p>
