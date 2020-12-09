@@ -1,6 +1,6 @@
 let cors            = require("cors");
 let validate        = require("./validateQuery.js");
-let search          = require("./database/oscarsData_search.js");
+let search          = require("./Database/oscarsData_search.js");
 
 
 //API Endpoints
