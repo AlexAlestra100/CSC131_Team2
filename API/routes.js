@@ -6,12 +6,7 @@ let search          = require("./Database/oscarsData_search.js");
 
 //API Endpoints
 let appRouter = function(app){
-    
-    
-    app.get("/doc", cors(), async function(req,res){
-        //res.render('./Documentation/API_Documentation.html');
-    });
-
+ 
     //Singleton response endpoint
     app.get("/ID/:ID", cors(), async function(req,res){
         if(req.params.ID >= 0){ 
